@@ -1,0 +1,23 @@
+# Visual Studio and build folders
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.vsidx
+*.vscode/
+*.http
+
+# Mac files
+.DS_Store
+
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.svg
+
+# IDE
+.vscode/
+.idea/
