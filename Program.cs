@@ -1,15 +1,24 @@
+using backendRickandMorty.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region apirick and morty
+var baseUrl = "https://rickandmortyapi.com/api";
+
+// Registra RickAndMortyService con HttpClient configurado
+builder.Services.AddHttpClient<RickAndMortyService>(client =>
+{
+    client.BaseAddress = new Uri(baseUrl);
+});
+#endregion
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

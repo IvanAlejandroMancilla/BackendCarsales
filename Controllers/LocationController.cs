@@ -1,4 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using backendRickandMorty.Models;
+using backendRickandMorty.Services;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace backendRickandMorty.Controllers
 {
@@ -6,35 +11,50 @@ namespace backendRickandMorty.Controllers
     [Route("[controller]")]
     public class LocationController : ControllerBase
     {
-        #region lista de todas locations
+        private readonly RickAndMortyService _rickAndMortyService;
+
+        public LocationController(RickAndMortyService rickAndMortyService)
+        {
+            _rickAndMortyService = rickAndMortyService;
+        }
+
+        // GET /location
         [HttpGet]
-        public IActionResult ListaLocations()
+        public async Task<IActionResult> ListaLocations()
         {
-            Console.WriteLine("Ejecutando ListaLocations");
-            // Respuesta de ejemplo
-            return Ok(new { Mensaje = "Lista de todas las locations", Locations = new List<string> { "Location 1", "Location 2" } });
+            var locations = await _rickAndMortyService.GetAllLocationsAsync();
+            return Ok(locations);
         }
-        #endregion
 
-        #region lista de single locations
+        // GET /location/5
         [HttpGet("{id}")]
-        public IActionResult ObtenerLocation(int id)
+        public async Task<IActionResult> ObtenerLocation(int id)
         {
-            Console.WriteLine($"Obteniendo location con id {id}");
-            // Respuesta de ejemplo
-            return Ok(new { Mensaje = $"Detalles de la location {id}", Id = id });
-        }
-        #endregion
+            var location = await _rickAndMortyService.GetLocationByIdAsync(id);
+            if (location == null)
+                return NotFound();
 
-        #region lista de multiples locations
-        [HttpGet("multiples/{ids}")]
-        public IActionResult ObtenerMultiplesLocations(string ids)
-        {
-            Console.WriteLine($"Obteniendo múltiples locations con ids {ids}");
-            // Respuesta de ejemplo
-            var idsArray = ids.Split(',').Select(int.Parse).ToList();
-            return Ok(new { Mensaje = $"Detalles de locations con ids: {ids}", Ids = idsArray });
+            return Ok(location);
         }
-        #endregion
+
+        // GET /location/multiples/1,2,3
+        [HttpGet("multiples/{ids}")]
+        public async Task<IActionResult> ObtenerMultiplesLocations(string ids)
+        {
+            var idsArray = ids.Split(',').Select(idStr => int.TryParse(idStr, out int id) ? id : (int?)null)
+                                           .Where(id => id.HasValue)
+                                           .Select(id => id.Value)
+                                           .ToList();
+
+            var locations = new List<Location>();
+            foreach (var id in idsArray)
+            {
+                var location = await _rickAndMortyService.GetLocationByIdAsync(id);
+                if (location != null)
+                    locations.Add(location);
+            }
+
+            return Ok(locations);
+        }
     }
 }
