@@ -10,7 +10,7 @@ namespace backendRickandMorty.Controllers
     [ApiController]
     [Route("[controller]")]
     public class EpisodeController : ControllerBase
-    {
+    { 
         private readonly RickAndMortyService _rickAndMortyService;
 
         public EpisodeController(RickAndMortyService rickAndMortyService)
