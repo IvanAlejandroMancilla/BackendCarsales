@@ -1,10 +1,7 @@
 # Rick and Morty Backend - BFF (Backend For Frontend)
 
-![Autor](https://img.shields.io/badge/Autor-Iv%C3%A1n%20Mancilla-lightgrey)  
-![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)  
-![C#](https://img.shields.io/badge/C%23-12.0-239120?logo=csharp&logoColor=white)  
-![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-8.0-512BD4?logo=dotnet&logoColor=white)  
-![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger&logoColor=black)  
+![Autor](https://img.shields.io/badge/Autor-Iv%C3%A1n%20Mancilla-lightgrey)  ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet&logoColor=white)  ![C#](https://img.shields.io/badge/C%23-12.0-239120?logo=csharp&logoColor=white)  
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET%20Core-8.0-512BD4?logo=dotnet&logoColor=white)  ![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger&logoColor=black)  
 ![Licencia](https://img.shields.io/badge/Licencia-Unlicense-blue)
 
 Backend BFF (Backend For Frontend) desarrollado en .NET 8 que consume la API pública de Rick and Morty y expone endpoints REST para el frontend Angular.
