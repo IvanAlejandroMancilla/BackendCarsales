@@ -34,46 +34,49 @@ API REST desarrollada en ASP.NET Core 8 que actúa como capa intermedia (BFF) en
 
 ### Verifica la versión de .NET:
 
+```
 dotnet --version
-
-text
+```
 
 Si no tienes .NET 8 instalado, descárgalo desde:
 - [https://dotnet.microsoft.com/download/dotnet/8.0](https://dotnet.microsoft.com/download/dotnet/8.0)
 
 ### Clonar el Repositorio
-
+```
 git clone https://github.com/IvanAlejandroMancilla/BackendCarsales.git
 cd BackendCarsales
-
-text
+```
 
 ### Restaurar dependencias:
 
+```
 dotnet restore
-
-text
+```
 
 ## ▶️ Ejecución
 
 ### Modo desarrollo
 
+```
 dotnet run
+```
+O desde Visual Studio 2022
 
-text
 
-> **Nota:** La API estará disponible en: [**http://localhost:5000**](http://localhost:5000) o [**https://localhost:5001**](https://localhost:5001)
+
+> **Nota:** La API estará disponible en: [**https://localhost:7290**](https://localhost:7290)
 
 ### Ver documentación Swagger
 
 Una vez ejecutado el proyecto, accede a:
-- [**http://localhost:5000/swagger**](http://localhost:5000/swagger)
+- [**https://localhost:7290/swagger/index.html**](https://localhost:7290/swagger/index.html)
 
 ### Build de producción
 
-dotnet build --configuration Release
 
-text
+```
+dotnet build --configuration Release
+```
 
 ---
 
@@ -94,7 +97,6 @@ BackendCarsales/
 ├── appsettings.json # Configuración general
 └── appsettings.Development.json # Configuración de desarrollo
 
-text
 
 ## ✨ Características
 
@@ -130,13 +132,13 @@ text
 | GET | `/api/Location/{id}` | Obtiene una locación por ID |
 
 ## 🛠️ Scripts Disponibles
-
+```
 dotnet run # Ejecuta la aplicación
 dotnet build # Compila el proyecto
 dotnet test # Ejecuta pruebas unitarias
 dotnet publish -c Release # Genera build de producción
+```
 
-text
 
 ---
 
@@ -151,15 +153,14 @@ Este backend consume la API pública de Rick and Morty:
 ### appsettings.json
 
 {
-"RickAndMortyApi": {
-"BaseUrl": "https://rickandmortyapi.com/api"
+"Logging": {
+"LogLevel": {
+"Default": "Information",
+"Microsoft.AspNetCore": "Warning"
+}
 },
-"Cors": {
-"AllowedOrigins": ["http://localhost:4200"]
+"AllowedHosts": "*"
 }
-}
-
-text
 
 ### CORS
 
@@ -175,17 +176,13 @@ Para modificar, edita el archivo `Program.cs`.
 Frontend (Angular) → Backend BFF (.NET 8) → Rick and Morty API
 ↓ ↓ ↓
 Consume /api/Episode Procesa/Transforma API Externa
-
-text
-
+---
 ## 👤 Autor
 
 **Iván Alejandro Mancilla**  
 GitHub: [@IvanAlejandroMancilla](https://github.com/IvanAlejandroMancilla)
 
 ## 📄 Licencia
-
-Este proyecto es parte de una prueba técnica para Carsales.
 
 ---
 
